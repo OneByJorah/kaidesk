@@ -3,6 +3,7 @@
 File to edit: `include/staff/header.inc.php`
 
 1. **Back this up too — this is the panel your agents live in all day:**
+
    ```bash
    cp include/staff/header.inc.php include/staff/header.inc.php.bak
    ```
@@ -10,18 +11,21 @@ File to edit: `include/staff/header.inc.php`
 2. Find where `css/scp.css` (or similar) is loaded inside `<head>`.
 
 3. Immediately after it, add:
+
    ```php
    <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/helpdesk/helpdesk-tokens.css">
    <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/helpdesk/helpdesk-staff-panel.css">
    ```
 
-3b. Right before `</body>` in the same file (or in the staff footer include
-   if there is one), add:
-   ```php
-   <script src="<?php echo ROOT_PATH; ?>js/helpdesk/helpdesk-staff-panel.js"></script>
-   ```
-   This powers the mobile sidebar toggle and the dark-mode toggle — CSS
-   alone won't add those, they need the JS.
+   1. Right before `</body>` in the same file (or in the staff footer include
+      if there is one), add:
+
+      ```php
+      <script src="<?php echo ROOT_PATH; ?>js/helpdesk/helpdesk-staff-panel.js"></script>
+      ```
+
+      This powers the mobile sidebar toggle and the dark-mode toggle — CSS
+      alone won't add those, they need the JS.
 
 4. Upload:
    - `css/helpdesk/helpdesk-tokens.css`
@@ -40,7 +44,9 @@ File to edit: `include/staff/header.inc.php`
 6. Hard-refresh (Ctrl+Shift+R).
 
 ## Rollback
+
 If anything looks broken, restore the two `.bak` files and hard-refresh:
+
 ```bash
 cp include/client/header.inc.php.bak include/client/header.inc.php
 cp include/staff/header.inc.php.bak include/staff/header.inc.php
